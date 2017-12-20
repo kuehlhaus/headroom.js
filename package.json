@@ -1,6 +1,6 @@
 {
   "name": "headroom.js",
-  "version": "0.7.3",
+  "version": "0.8.0",
   "description": "Give your page some headroom. Hide your header until you need it",
   "main": "dist/headroom.js",
   "scripts": {
@@ -19,7 +19,11 @@
   "author": "Nick Williams",
   "homepage": "http://wicky.nillia.ms/headroom.js",
   "contributors": [
-    { "name": "Dominik Schmidt", "email": "nick@kreativgebiet.com", "url": "http://kreativgebiet.com" }
+    {
+      "name": "Dominik Schmidt",
+      "email": "nick@kreativgebiet.com",
+      "url": "http://kreativgebiet.com"
+    }
   ],
   "license": "MIT",
   "bugs": {

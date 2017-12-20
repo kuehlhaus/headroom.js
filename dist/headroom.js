@@ -1,23 +1,20 @@
 /*!
- * headroom.js v0.7.0 - Give your page some headroom. Hide your header until you need it
- * Copyright (c) 2015 Nick Williams - http://wicky.nillia.ms/headroom.js
+ * headroom.js v0.8.0 - Give your page some headroom. Hide your header until you need it
+ * Copyright (c) 2017 Nick Williams - http://wicky.nillia.ms/headroom.js
  * License: MIT
  */
 
 (function(root, factory) {
   'use strict';
 
-  if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
+  if (typeof(define) === 'function' && define.amd) {
     define([], factory);
   }
   else if (typeof exports === 'object') {
-    // COMMONJS
-    module.exports = factory();
+    module.exports = factory;
   }
   else {
-    // BROWSER
-    root.Headroom = factory();
+    root.Headroom = factory;
   }
 }(this, function() {
   'use strict';
@@ -158,6 +155,16 @@
   
       return this;
     },
+    
+    reinit : function() {
+      if(!Headroom.cutsTheMustard) {
+        return;
+      }
+  
+      setTimeout(this.attachEvent.bind(this), 100);
+  
+      return this;
+    },
   
     /**
      * Unattaches events and removes any classes that were added
@@ -167,6 +174,11 @@
   
       this.initialised = false;
       this.elem.classList.remove(classes.unpinned, classes.pinned, classes.top, classes.initial);
+      this.scroller.removeEventListener('scroll', this.debouncer, false);
+    },
+    
+    destroyEvents : function() {
+      this.initialised = false;
       this.scroller.removeEventListener('scroll', this.debouncer, false);
     },
   

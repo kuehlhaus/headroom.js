@@ -86,6 +86,16 @@ Headroom.prototype = {
 
     return this;
   },
+  
+  reinit : function() {
+    if(!Headroom.cutsTheMustard) {
+      return;
+    }
+
+    setTimeout(this.attachEvent.bind(this), 100);
+
+    return this;
+  },
 
   /**
    * Unattaches events and removes any classes that were added
@@ -95,6 +105,11 @@ Headroom.prototype = {
 
     this.initialised = false;
     this.elem.classList.remove(classes.unpinned, classes.pinned, classes.top, classes.initial);
+    this.scroller.removeEventListener('scroll', this.debouncer, false);
+  },
+  
+  destroyEvents : function() {
+    this.initialised = false;
     this.scroller.removeEventListener('scroll', this.debouncer, false);
   },
 
